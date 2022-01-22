@@ -26,7 +26,7 @@ Output: false
 
 # Solution1
 ```java
-public static boolean solve(String str) {
+public static boolean solve1(String str) {
         Stack<Character> workList = new Stack<>();
 
         for (Character c : str.toCharArray()) {
@@ -51,5 +51,24 @@ public static boolean solve(String str) {
             }
         }
         return workList.isEmpty();
+    }
+```
+
+# Solution2
+```java
+public static boolean solve2(String str) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : str.toCharArray()) {
+            if (c == '(') {
+                stack.push(')');
+            } else if (c == '{') {
+                stack.push('}');
+            } else if (c == '[') {
+                stack.push(']');
+            } else if (stack.isEmpty() || stack.pop() != c) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
     }
 ```
